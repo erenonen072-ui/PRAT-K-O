@@ -1,0 +1,48 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://hesapgo.vercel.app/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/kategori.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/arac.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/hakkimizda.html</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/iletisim.html</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/gizlilik-politikasi.html</loc>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/kullanim-sartlari.html</loc>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://hesapgo.vercel.app/cerez-politikasi.html</loc>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
