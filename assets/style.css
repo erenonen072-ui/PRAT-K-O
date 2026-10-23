@@ -190,3 +190,25 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* HESAPGO — Profesyonel araç sayfası */
+.tool-page {
+  width: min(1120px, calc(100% - 36px));
+  margin: 34px auto 80px;
+}
+
+.breadcrumbs {
+  color: #85869a;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.breadcrumbs a {
+  color: #6557e8;
+  font-weight: 700;
+}
+
+.tool-hero {
+  padding: 38px;
+  margin-bottom: 26px;
+ 
