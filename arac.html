@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hesaplama Aracı | HESAPGO</title>
+  <meta name="description" content="HESAPGO ücretsiz hesaplama aracı.">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="header">
+  <a class="logo" href="/">HESAPGO</a>
+  <a href="/">Ana sayfa</a>
+</header>
+
+<main class="container">
+  <section>
+    <h1 id="toolTitle">Hesaplama Aracı</h1>
+    <p id="toolDescription">Değerleri girin ve hesaplayın.</p>
+
+    <div class="info">
+      <label for="value">Tutar / İlk sayı</label>
+      <input id="value" type="number" step="any">
+
+      <label for="rate">Yüzde / İkinci sayı</label>
+      <input id="rate" type="number" step="any">
+
+      <button id="calculate" class="btn">Hesapla</button>
+      <h2 id="result" aria-live="polite">Sonuç burada gösterilir.</h2>
+    </div>
+  </section>
+</main>
+
+<script src="/assets/tools.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const slug = params.get("tool") || "yuzde-hesaplama";
+const tool = (window.HESAPGO_TOOLS || []).find(t => t.slug === slug);
+
+if (tool) {
+  document.title = tool.name + " | HESAPGO";
+  document.getElementById("toolTitle").textContent = tool.name;
+  document.getElementById("toolDescription").textContent = tool.description;
+}
+
+document.getElementById("calculate").addEventListener("click", () => {
+  const a = Number(document.getElementById("value").value);
+  const b = Number(document.getElementById("rate").value);
+  const name = tool ? tool.name : "";
+
+  if (document.getElementById("value").value === "" ||
+      document.getElementById("rate").value === "") {
+    document.getElementById("result").textContent =
+      "Lütfen iki alanı da doldurun.";
+    return;
+  }
+
+  let result;
+
+  if (name.includes("Yüzde")) {
+    result = a * b / 100;
+  } else if (name.includes("İndirim")) {
+    result = a - a * b / 100;
+  } else if (name.includes("KDV")) {
+    result = a + a * b / 100;
+  } else if (name.includes("Ortalama")) {
+    result = (a + b) / 2;
+  } else if (name.includes("Kâr")) {
+    result = b - a;
+  } else if (name.includes("Bahşiş")) {
+    result = a * b / 100;
+  } else {
+    result = a * b / 100;
+  }
+
+  document.getElementById("result").textContent =
+    "Sonuç: " + result.toLocaleString("tr-TR", {
+      maximumFractionDigits: 4
+    });
+});
+</script>
+</body>
+</html>
