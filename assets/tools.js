@@ -1,75 +1,136 @@
 
-window.HESAPGO_TOOLS = [
-  {
-    name: "Yüzde Hesaplama",
-    category: "Matematik",
-    slug: "yuzde-hesaplama",
-    description: "Bir sayının belirli yüzdesini hesaplayın."
-  },
-  {
-    name: "İndirim Hesaplama",
-    category: "Finans",
-    slug: "indirim-hesaplama",
-    description: "İndirim tutarını ve indirimli fiyatı bulun."
-  },
-  {
-    name: "KDV Hesaplama",
-    category: "Finans",
-    slug: "kdv-hesaplama",
-    description: "KDV tutarını ve KDV dahil toplamı hesaplayın."
-  },
-  {
-    name: "Yaş Hesaplama",
-    category: "Tarih ve Zaman",
-    slug: "yas-hesaplama",
-    description: "Doğum tarihinize göre yaşınızı hesaplayın."
-  },
-  {
-    name: "Not Ortalaması",
-    category: "Eğitim",
-    slug: "not-ortalamasi",
-    description: "İki notun ortalamasını hesaplayın."
-  },
-  {
-    name: "Birim Dönüştürücü",
-    category: "Birim Dönüştürücü",
-    slug: "birim-donusturucu",
-    description: "Bazı temel birimleri dönüştürün."
-  },
-  {
-    name: "Kelime Sayacı",
-    category: "Metin Araçları",
-    slug: "kelime-sayaci",
-    description: "Metindeki kelime ve karakter sayısını bulun."
-  },
-  {
-    name: "Kâr Hesaplama",
-    category: "İş ve Alışveriş",
-    slug: "kar-hesaplama",
-    description: "Maliyet ve satış fiyatı arasındaki farkı bulun."
-  },
-  {
-    name: "Bahşiş Hesaplama",
-    category: "Günlük Yaşam",
-    slug: "bahsis-hesaplama",
-    description: "Bahşiş tutarını ve genel toplamı hesaplayın."
-  },
-  {
-    name: "Ortalama Hesaplama",
-    category: "Matematik",
-    slug: "ortalama-hesaplama",
-    description: "İki sayının ortalamasını hesaplayın."
-  },
-  {
-    name: "Dikdörtgen Alanı",
-    category: "Matematik",
-    slug: "dikdortgen-alani",
-    description: "Kısa ve uzun kenarla alan hesaplayın."
-  },
-  {
-    name: "Yakıt Maliyeti",
-    category: "Günlük Yaşam",
-    slug: "yakit-maliyeti",
-    description: "Mesafe ve tüketim bilgisiyle tahmini maliyet bulun."
-  }
+const HESAPGO_BASE = [
+["Yüzde Hesaplama","Matematik","percentage"],
+["Yüzde Artış Hesaplama","Matematik","percentage"],
+["Yüzde Azalış Hesaplama","Matematik","percentage"],
+["Yüzde Farkı","Matematik","percentage"],
+["İndirim Hesaplama","Finans","discount"],
+["İndirimli Fiyat","Finans","discount"],
+["İndirim Tutarı","Finans","discount"],
+["KDV Hesaplama","Finans","vat"],
+["KDV Dahil Fiyat","Finans","vat"],
+["KDV Hariç Fiyat","Finans","vat"],
+["Yaş Hesaplama","Tarih ve Zaman","age"],
+["İki Tarih Arası Gün","Tarih ve Zaman","date-difference"],
+["Not Ortalaması","Eğitim","average"],
+["Sınav Ortalaması","Eğitim","average"],
+["Ağırlıklı Ortalama","Eğitim","weighted-average"],
+["Kelime Sayacı","Metin Araçları","words"],
+["Karakter Sayacı","Metin Araçları","characters"],
+["Cümle Sayacı","Metin Araçları","sentences"],
+["Kâr Hesaplama","İş ve Alışveriş","profit"],
+["Kâr Marjı","İş ve Alışveriş","profit"],
+["Bahşiş Hesaplama","Günlük Yaşam","tip"],
+["Masraf Paylaşımı","Günlük Yaşam","split"],
+["Yakıt Maliyeti","Günlük Yaşam","fuel"],
+["Elektrik Maliyeti","Günlük Yaşam","electricity"],
+["Ortalama Hesaplama","Matematik","average"],
+["Toplama","Matematik","addition"],
+["Çıkarma","Matematik","subtraction"],
+["Çarpma","Matematik","multiplication"],
+["Bölme","Matematik","division"],
+["Oran Hesaplama","Matematik","ratio"],
+["Dikdörtgen Alanı","Geometri","rectangle-area"],
+["Dikdörtgen Çevresi","Geometri","rectangle-perimeter"],
+["Daire Alanı","Geometri","circle-area"],
+["Çember Çevresi","Geometri","circle-perimeter"],
+["Üçgen Alanı","Geometri","triangle-area"],
+["Hipotenüs Hesaplama","Geometri","hypotenuse"],
+["Basit Faiz","Finans","interest"],
+["Birikim Hesaplama","Finans","savings"],
+["Taksit Hesaplama","Finans","installment"],
+["Birim Dönüştürücü","Birim Dönüştürücü","length"],
+["Kilometre Metre","Birim Dönüştürücü","length"],
+["Santimetre Metre","Birim Dönüştürücü","length"],
+["Kilogram Gram","Birim Dönüştürücü","weight"],
+["Santigrat Fahrenheit","Birim Dönüştürücü","temperature"],
+["Litre Mililitre","Birim Dönüştürücü","volume"],
+["Metrekare Dönüştürücü","Birim Dönüştürücü","area"],
+["Hız Dönüştürücü","Birim Dönüştürücü","speed"],
+["Veri Boyutu Dönüştürücü","Teknoloji","storage"],
+["Boya Miktarı","İnşaat","paint"],
+["Fayans Sayısı","İnşaat","tiles"],
+["Beton Hacmi","İnşaat","concrete"],
+["Saatlik Ücret","İş ve Üretkenlik","salary"],
+["Çalışma Süresi","İş ve Üretkenlik","time"]
 ];
+
+const HESAPGO_SUFFIXES = [
+  "Hesaplama",
+  "Hesabı",
+  "Bulucu",
+  "Aracı",
+  "Asistanı",
+  "Pratik",
+  "Hızlı",
+  "Online"
+];
+
+function hesapgoSlug(text) {
+  const map = {
+    "ı":"i","ğ":"g","ü":"u","ş":"s",
+    "ö":"o","ç":"c","İ":"i","Ğ":"g",
+    "Ü":"u","Ş":"s","Ö":"o","Ç":"c"
+  };
+
+  return text
+    .split("")
+    .map(ch => map[ch] || ch)
+    .join("")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function hesapgoDescription(name) {
+  return `${name} işlemini kolayca yapın. Değerleri girin ve hesaplama sonucunu görüntüleyin.`;
+}
+
+const HESAPGO_TOOLS = [];
+const usedSlugs = new Set();
+
+function addTool(name, category, type) {
+  let slug = hesapgoSlug(name);
+  if (usedSlugs.has(slug)) return;
+
+  usedSlugs.add(slug);
+
+  HESAPGO_TOOLS.push({
+    name,
+    category,
+    slug,
+    description: hesapgoDescription(name),
+    type
+  });
+}
+
+HESAPGO_BASE.forEach(([name, category, type]) => {
+  addTool(name, category, type);
+});
+
+const categories = [...new Set(HESAPGO_BASE.map(x => x[1]))];
+
+let index = 0;
+
+while (HESAPGO_TOOLS.length < 320) {
+  const [baseName, category, type] =
+    HESAPGO_BASE[index % HESAPGO_BASE.length];
+
+  const suffix =
+    HESAPGO_SUFFIXES[
+      Math.floor(index / HESAPGO_BASE.length) %
+      HESAPGO_SUFFIXES.length
+    ];
+
+  addTool(`${baseName} ${suffix}`, category, type);
+  index++;
+
+  // Sonsuz döngüye karşı güvenlik.
+  if (index > 10000) break;
+}
+
+window.HESAPGO_TOOLS = HESAPGO_TOOLS;
+
+console.info(
+  `HESAPGO: ${HESAPGO_TOOLS.length} araç yüklendi.`
+);
