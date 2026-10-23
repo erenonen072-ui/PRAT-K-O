@@ -1,84 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hesaplama Aracı | HESAPGO</title>
-  <meta name="description" content="HESAPGO ücretsiz hesaplama aracı.">
+  <meta name="theme-color" content="#6554dc">
+  <meta name="description" content="HESAPGO ile hesaplamanı hızlıca yap. Pratik, anlaşılır ve ücretsiz online hesaplama araçları.">
+  <title>Online Hesaplama Aracı | HESAPGO</title>
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-<header class="header">
-  <a class="logo" href="/">HESAPGO</a>
-  <a href="/">Ana sayfa</a>
-</header>
+  <main class="tool-page">
+    <nav class="breadcrumbs" aria-label="Sayfa konumu">
+      <a href="/">HESAPGO</a> / <span id="crumb">Hesaplama Araçları</span>
+    </nav>
 
-<main class="container">
-  <section>
-    <h1 id="toolTitle">Hesaplama Aracı</h1>
-    <p id="toolDescription">Değerleri girin ve hesaplayın.</p>
+    <header class="tool-hero">
+      <span class="tool-badge">✦ HESAPGO • Ücretsiz Araç</span>
+      <h1 id="title">Akıllı Hesaplama Araçları</h1>
+      <p id="desc">
+        İhtiyacın olan hesabı kolayca yap. Değerlerini gir, hesapla ve sonucunu anında gör.
+      </p>
+    </header>
 
-    <div class="info">
-      <label for="value">Tutar / İlk sayı</label>
-      <input id="value" type="number" step="any">
+    <div class="calc-layout">
+      <section class="panel">
+        <h2 id="formTitle">Hesaplama paneli</h2>
+        <p class="panel-subtitle">
+          Gerekli alanları doldur ve hesapla düğmesine bas.
+        </p>
 
-      <label for="rate">Yüzde / İkinci sayı</label>
-      <input id="rate" type="number" step="any">
+        <form id="calcForm">
+          <div id="fields" class="field-grid"></div>
 
-      <button id="calculate" class="btn">Hesapla</button>
-      <h2 id="result" aria-live="polite">Sonuç burada gösterilir.</h2>
+          <div class="calc-actions">
+            <button class="primary" type="submit">✦ Hesapla</button>
+            <button class="secondary" type="reset" id="reset">Temizle</button>
+          </div>
+        </form>
+        <p class="tool-note">Sonuçlar girdiğin değerlere göre hesaplanır. Önemli finansal veya resmî kararlar için sonuçları ayrıca kontrol et.</p>
+      </section>
+
+      <aside class="result-panel" aria-live="polite">
+        <span class="result-label">HESAPLAMA SONUCUN</span>
+        <output id="result" class="result-value">—</output>
+        <p id="resultText" class="result-placeholder">
+          Hesaplama yapmak için soldaki alanları doldur.
+        </p>
+        <div id="resultDetail" class="result-detail">
+          Sonucun burada gösterilecek.
+        </div>
+        <button type="button" class="copy-result" id="copyResult">
+          Sonucu kopyala
+        </button>
+      </aside>
     </div>
-  </section>
-</main>
 
-<script src="/assets/tools.js"></script>
-<script>
-const params = new URLSearchParams(location.search);
-const slug = params.get("tool") || "yuzde-hesaplama";
-const tool = (window.HESAPGO_TOOLS || []).find(t => t.slug === slug);
+    <section class="content-section">
+      <h2>Bu araç nasıl kullanılır?</h2>
+      <p id="howTo">
+        İlgili alanlara değerlerini gir. Ardından Hesapla düğmesine basarak sonucu görüntüle.
+      </p>
+    </section>
 
-if (tool) {
-  document.title = tool.name + " | HESAPGO";
-  document.getElementById("toolTitle").textContent = tool.name;
-  document.getElementById("toolDescription").textContent = tool.description;
-}
+    <section class="content-section">
+      <h2>Sık sorulan sorular</h2>
+      <div class="faq-item">
+        <h3>HESAPGO ücretsiz mi?</h3>
+        <p>Bu sayfadaki hesaplama aracını kullanmak için ödeme yapman gerekmez.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Sonuçlar nasıl hesaplanıyor?</h3>
+        <p>Sonuçlar, araca girilen değerler ve ilgili hesaplama yöntemi kullanılarak tarayıcında hesaplanır.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Hesaplama sonucumu kontrol etmeli miyim?</h3>
+        <p>Evet. Özellikle finansal, eğitimle ilgili veya resmî işlemlerde kullanılan sonuçları doğrulaman faydalıdır.</p>
+      </div>
+    </section>
 
-document.getElementById("calculate").addEventListener("click", () => {
-  const a = Number(document.getElementById("value").value);
-  const b = Number(document.getElementById("rate").value);
-  const name = tool ? tool.name : "";
+    <section class="content-section">
+      <h2>İlgili hesaplama araçları</h2>
+      <div id="related" class="related-grid"></div>
+    </section>
+  </main>
 
-  if (document.getElementById("value").value === "" ||
-      document.getElementById("rate").value === "") {
-    document.getElementById("result").textContent =
-      "Lütfen iki alanı da doldurun.";
-    return;
-  }
-
-  let result;
-
-  if (name.includes("Yüzde")) {
-    result = a * b / 100;
-  } else if (name.includes("İndirim")) {
-    result = a - a * b / 100;
-  } else if (name.includes("KDV")) {
-    result = a + a * b / 100;
-  } else if (name.includes("Ortalama")) {
-    result = (a + b) / 2;
-  } else if (name.includes("Kâr")) {
-    result = b - a;
-  } else if (name.includes("Bahşiş")) {
-    result = a * b / 100;
-  } else {
-    result = a * b / 100;
-  }
-
-  document.getElementById("result").textContent =
-    "Sonuç: " + result.toLocaleString("tr-TR", {
-      maximumFractionDigits: 4
-    });
-});
-</script>
+  <script src="/assets/tools.js"></script>
+  <script src="/assets/calculator.js"></script>
 </body>
 </html>
