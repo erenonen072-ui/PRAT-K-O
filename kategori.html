@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kategoriler | HESAPGO</title>
+  <meta name="description" content="HESAPGO hesaplama araçlarını kategorilere göre keşfedin.">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="header"><a class="logo" href="/">HESAPGO</a></header>
+<main class="container">
+  <section>
+    <h1 id="title">Araç kategorisi</h1>
+    <div id="results" class="grid"></div>
+  </section>
+</main>
+<script src="/assets/tools.js"></script>
+<script>
+const category = new URLSearchParams(location.search).get("category");
+document.getElementById("title").textContent = category || "Kategoriler";
+const results = document.getElementById("results");
+
+(window.HESAPGO_TOOLS || [])
+  .filter(t => !category || t.category === category)
+  .forEach(t => {
+    const a = document.createElement("a");
+    a.className = "tool-card";
+    a.href = "/arac.html?tool=" + encodeURIComponent(t.slug);
+    const strong = document.createElement("strong");
+    strong.textContent = t.name;
+    const small = document.createElement("small");
+    small.textContent = t.description || t.category;
+    a.append(strong, small);
+    results.appendChild(a);
+  });
+</script>
+</body>
+</html>
