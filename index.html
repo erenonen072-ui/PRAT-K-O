@@ -1,93 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#6657e8">
+  <meta name="theme-color" content="#ffffff">
 
-  <title>HESAPGO – Ücretsiz Hesaplama Araçları</title>
-  <meta name="description" content="HESAPGO ile yüzde, KDV, indirim, yaş, not ortalaması ve birim hesaplamalarını ücretsiz yapın.">
-  <link rel="canonical" href="https://ALANADIN.com/">
-  <link rel="icon" href="/images/logo.svg.jpeg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/style.css">
+  <title>HESAPGO — Ücretsiz Online Hesaplama Araçları</title>
+  <meta name="description" content="Yüzde, indirim, KDV, yaş, ortalama ve daha birçok hesaplamayı HESAPGO ile kolayca yap. Ücretsiz ve pratik online hesaplama araçları.">
+  <link rel="canonical" href="https://hesapgo.vercel.app/">
+  <link rel="stylesheet" href="/assets/home.css">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="HESAPGO – Ücretsiz Hesaplama Araçları">
-  <meta property="og:description" content="Günlük hesaplamalar için ücretsiz çevrimiçi araçlar.">
-  <meta property="og:url" content="https://ALANADIN.com/">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "HESAPGO",
-    "url": "https://hesapgo.vercel.app/"
-  }
-  </script>
 </head>
 <body>
-<header class="header">
-  <a class="logo" href="/">
-    <img src="/images/logo.svg.jpeg" alt="" width="42" height="42">
-    HESAPGO
-  </a>
-  <nav>
-    <a href="#kategoriler">Kategoriler</a>
-    <a href="/hakkimizda.html">Hakkımızda</a>
-    <a href="/iletisim.html">İletişim</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="HESAPGO ana sayfa">
+        <span class="brand-icon">H</span>
+        <span>HESAP<span class="brand-accent">GO</span></span>
+      </a>
 
-<main>
-  <section class="hero">
-    <span class="eyebrow">ÜCRETSİZ ÇEVRİMİÇİ ARAÇLAR</span>
-    <h1>Hesapla. Öğren. <span>Kolaylaştır.</span></h1>
-    <p>Günlük hesaplamalar ve pratik araçlar tek yerde.</p>
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="#araclar">Tüm araçlar</a>
+        <a href="#kategoriler">Kategoriler</a>
+        <a href="#hakkinda">Hakkında</a>
+      </nav>
 
-    <input id="search" type="search"
-      placeholder="Yüzde, KDV, yaş, not ortalaması ara..."
-      aria-label="Araç ara">
+      <a class="header-cta" href="#araclar">Araçları keşfet <span>↗</span></a>
 
-    <div class="popular">
-      <h2>En Çok Lazım Olanlar</h2>
-      <div id="popularTools" class="grid"></div>
+      <button class="mobile-menu-button" id="mobileMenuButton"
+        aria-label="Menüyü aç veya kapat" aria-expanded="false">☰</button>
     </div>
-  </section>
 
-  <div class="container">
-    <div class="ad-slot">Reklam alanı</div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobil menü">
+      <a href="#araclar">Tüm araçlar</a>
+      <a href="#kategoriler">Kategoriler</a>
+      <a href="#hakkinda">Hakkında</a>
+    </nav>
+  </header>
 
-    <section id="kategoriler">
-      <h2>Kategoriler</h2>
-      <div id="categories" class="category-grid"></div>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="status-dot"></span> Hızlı • Ücretsiz • Kolay</span>
+
+        <h1>Hesaplamanın<br> <span>kolay yolu.</span></h1>
+
+        <p class="hero-description">
+          Günlük hayatında ihtiyaç duyduğun hesaplamaları tek bir yerde,
+          kolayca ve anlaşılır sonuçlarla yap.
+        </p>
+
+        <form class="search-box" id="searchForm" role="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search"
+            placeholder="Hangi hesabı yapmak istiyorsun?"
+            aria-label="Hesaplama aracı ara" autocomplete="off">
+          <button type="submit">Ara <span>→</span></button>
+        </form>
+
+        <div class="popular-searches">
+          <span>Popüler:</span>
+          <button type="button" data-search="yüzde">Yüzde hesabı</button>
+          <button type="button" data-search="indirim">İndirim</button>
+          <button type="button" data-search="yaş">Yaş hesabı</button>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-glow"></div>
+        <div class="calculator-card">
+          <div class="calculator-top">
+            <span class="calculator-dots"><i></i><i></i><i></i></span>
+            <span>HESAPGO</span>
+          </div>
+          <div class="calculator-caption">Hızlı hesaplama</div>
+          <div class="calculator-number">250 × 0,20</div>
+          <div class="calculator-divider"></div>
+          <div class="calculator-answer">
+            <span>Sonuç</span>
+            <strong>50</strong>
+          </div>
+          <div class="calculator-success">✓ Hesaplama hazır</div>
+        </div>
+        <div class="floating-note note-top">✦ Basit ve hızlı</div>
+        <div class="floating-note note-bottom"><span>✓</span> Ücretsiz araçlar</div>
+      </div>
     </section>
 
-    <section>
-      <h2>Tüm Hesaplama Araçları</h2>
-      <p id="toolCount"></p>
-      <div id="allTools" class="grid"></div>
+    <section class="trust-strip" aria-label="HESAPGO özellikleri">
+      <div><span class="trust-icon">↗</span><span><strong>Hızlı sonuç</strong><small>Beklemeden hesapla</small></span></div>
+      <div><span class="trust-icon">◇</span><span><strong>Kolay kullanım</strong><small>Basit ve anlaşılır</small></span></div>
+      <div><span class="trust-icon">▦</span><span><strong>Birçok araç</strong><small>Tek noktada toplanmış</small></span></div>
     </section>
 
-    <section class="info">
-      <h2>HESAPGO nedir?</h2>
-      <p>HESAPGO; matematik, eğitim, finans, tarih, birim dönüştürme ve günlük yaşam hesaplamaları için tasarlanan çevrimiçi araç platformudur. Sonuçları önemli kararlarda kullanmadan önce kontrol edin.</p>
+    <section class="content-section" id="kategoriler">
+      <div class="section-heading">
+        <div>
+          <span class="section-kicker">KEŞFET</span>
+          <h2>Kategoriler</h2>
+          <p>İhtiyacına uygun hesaplama türünü seç.</p>
+        </div>
+      </div>
+
+      <div class="category-list" id="categoryList">
+        <button class="category-chip active" data-category="all">Tüm araçlar</button>
+      </div>
     </section>
-  </div>
-</main>
 
-<footer>
-  <p>© <span id="year"></span> HESAPGO</p>
-  <div class="footer-links">
-    <a href="/hakkimizda.html">Hakkımızda</a>
-    <a href="/iletisim.html">İletişim</a>
-    <a href="/gizlilik-politikasi.html">Gizlilik Politikası</a>
-    <a href="/cerez-politikasi.html">Çerez Politikası</a>
-    <a href="/kullanim-sartlari.html">Kullanım Şartları</a>
-  </div>
-</footer>
+    <section class="content-section tools-section" id="araclar">
+      <div class="section-heading tools-heading">
+        <div>
+          <span class="section-kicker">ARAÇ KÜTÜPHANESİ</span>
+          <h2 id="toolsHeading">İşini kolaylaştıran araçlar</h2>
+          <p id="toolsDescription">Kullanmak istediğin aracı seç ve hemen hesaplamaya başla.</p>
+        </div>
+        <span class="tool-count" id="toolCount">Araçlar</span>
+      </div>
 
-<script src="/assets/tools.js"></script>
-<script src="/assets/app.js"></script>
+      <div class="tools-grid" id="toolsGrid">
+        <div class="empty-state">Araçlar yükleniyor...</div>
+      </div>
+
+      <div class="no-results" id="noResults" hidden>
+        <span>⌕</span>
+        <h3>Aradığın aracı bulamadık</h3>
+        <p>Başka bir kelime dene veya farklı bir kategori seç.</p>
+        <button id="clearSearch" type="button">Aramayı temizle</button>
+      </div>
+
+      <div class="load-more-wrap">
+        <button id="loadMore" class="load-more" type="button">Daha fazla araç göster <span>↓</span></button>
+      </div>
+    </section>
+
+    <section class="about-section" id="hakkinda">
+      <div class="about-mark">H</div>
+      <div>
+        <span class="section-kicker">HESAPGO HAKKINDA</span>
+        <h2>Hesap yapmak artık daha kolay.</h2>
+        <p>
+          HESAPGO, günlük hesaplamalarını daha pratik şekilde yapabilmen için
+          tasarlanmış bir online araç platformudur. İhtiyacın olan aracı bul,
+          değerlerini gir ve sonucunu görüntüle.
+        </p>
+      </div>
+      <a href="#araclar" class="about-link">Araçları incele <span>→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="/">
+        <span class="brand-icon">H</span>
+        <span>HESAP<span class="brand-accent">GO</span></span>
+      </a>
+      <p>Günlük hesaplamalar için pratik araçlar.</p>
+      <div class="footer-links">
+        <a href="/gizlilik/">Gizlilik</a>
+        <a href="/hakkimizda/">Hakkımızda</a>
+        <a href="/iletisim/">İletişim</a>
+      </div>
+      <small>© <span id="currentYear"></span> HESAPGO</small>
+    </div>
+  </footer>
+
+  <script src="/assets/tools.js"></script>
+  <script src="/assets/home.js"></script>
 </body>
 </html>
